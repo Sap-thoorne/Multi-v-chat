@@ -23,7 +23,8 @@ return btoa(serialized);
 
 const express = require('express')
 const app = express()
-const port = 3000
+app.set('port', process.env.PORT || 3000)
+// const port = app.port
 
 app.use(express.static('public'))
 
@@ -35,7 +36,7 @@ token: generateToken(thirtyMinutes)
 res.send(response);
 })
 
-app.listen(port, () => console.log(`Listening on port ${port}!`))
+app.listen((process.env.PORT || 3000), () => console.log(`Listening on port ${port}!`))
 
 
 
